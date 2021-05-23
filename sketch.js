@@ -73,6 +73,14 @@ function draw() {
     //write code to move air balloon in down direction
   }
 
+  heart.x = balloon.x - 150;
+  heart1.x = balloon.x - 100;
+  heart2.x = balloon.x - 50;
+
+  heart.y = balloon.y - 280;
+  heart1.y = balloon.y - 280;
+  heart2.y = balloon.y - 280;
+
   if (balloon.isTouching(obstaclesGroup)){
     lives = lives - 1;
     obstaclesGroup.destroyEach();
@@ -96,6 +104,9 @@ function draw() {
   }
 
   // if (balloon.isTouching())
+
+  camera.position.x = balloon.x;
+  camera.position.y = displayHeight / 2;
 
 // spawnEagle();
 // spawnFireball();
@@ -169,10 +180,11 @@ function readPosition(data){
 
   function spawnCoin(){
 
-    if(frameCount % 100 === 0){
+    if(frameCount % 10 === 0){
       coin = createSprite(1250, 200, 50, 50);
+      coin.x = Math.round(random(100, 100000));
       coin.y = Math.round(random(50, 500));
-      coin.velocityX = -5;
+      // coin.velocityX = -5;
       coin.addImage("coin", coinImage);
       coin.scale = 0.025;
       coin.lifetime = 500;
@@ -183,10 +195,11 @@ function readPosition(data){
 
   function spawnObstacles(){
   
-    if (frameCount % 120 === 0){
+    if (frameCount % 10 === 0){
       obstacle = createSprite(1250, 120);
+      obstacle.x = Math.round(random(100, 100000));
       obstacle.y = Math.round(random(50, 500));
-      obstacle.velocityX = -5;
+      // obstacle.velocityX = -5;
       // obstacle.y = Math.round(random(50, 550));
       
       var rand = Math.round(random(1,2));
